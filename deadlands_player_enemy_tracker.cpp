@@ -31,8 +31,16 @@ void dcl::addWound() {
     _dead = B00000000;
   }
 }
-void dcl::kill( ) {
+void dcl::kill() {
   _dead = B00001000;
+}
+void dcl::staggered() {
+  if (_staggered) {
+    _staggered = false;
+  }
+  else {
+    _staggered = true;
+  }
 }
 void dcl::addFatigue() {
   if (_fatigue & B00000110 = B00000000) {

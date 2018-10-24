@@ -17,6 +17,7 @@ class Character {
     Character(int enemyID, bool wildCard);
     void addWound();
     void kill();
+    void staggered();
     void addFatigue();
     void setWildCard();
     void setToughness();
@@ -28,6 +29,7 @@ class Character {
     void setEnemyStatus(byte status = B00000000);
     byte _wounds;
     byte _fatigue;
+    bool _staggered;
     bool _wildCard;
     byte _dead;
     bool _deadFromWound;
