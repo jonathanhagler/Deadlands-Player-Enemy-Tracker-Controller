@@ -5,7 +5,7 @@ Character::Character(int enemyID, bool wildCard) {
   _wildCard = wildCard;
   _wounds = B00010000;
   _fatigue = B00000010;
-  _staggered = true;
+  _staggered = false;
   _dead = true;
   _deadFromWound = false;
   _deadFromFatigue = false;
