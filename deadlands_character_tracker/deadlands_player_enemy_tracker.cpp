@@ -6,7 +6,7 @@ Character::Character(int enemyID, bool wildCard) {
   _wounds = B00000000;
   _fatigue = B00000000;
   _staggered = false;
-  _dead = true;
+  _dead = false;
   _deadFromWound = false;
   _deadFromFatigue = false;
   _toughness = B00000000;
@@ -45,6 +45,7 @@ void Character::addWound() {
   else if (_deadFromWound) {
     _wounds = B00000000;
     _deadByte = B00000000;
+    _deadFromWound = false;
   }
   else if (_woundResult == B01110000) {
     _deadFromWound = true;
@@ -73,6 +74,7 @@ void Character::addFatigue() {
   else if (_deadFromFatigue) {
     _fatigue = B00000000;
     _deadByte = B00000000;
+    _deadFromFatigue = false;
   }
   else if (_fatigueResult == B00000110) {
     _deadFromFatigue = true;

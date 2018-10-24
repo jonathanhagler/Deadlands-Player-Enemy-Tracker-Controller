@@ -13,7 +13,7 @@ void setup() {
 }
 
 void loop() {
-  for(int x=0; x > 3; x++){
+  for(int x=0; x < 5; x++){
   Serial.print("Enemy 1 Staggard: ");
   Serial.print(enemy1.getStaggeredByte(),BIN);
   Serial.print("\n");
@@ -38,7 +38,7 @@ void loop() {
   enemy1.addWound();
   }
 
-  for(int x=0; x > 3; x++){
+  for(int x=0; x < 4; x++){
     Serial.print("Enemy 1 Staggard: ");
     Serial.print(enemy1.getStaggeredByte(),BIN);
     Serial.print("\n");
