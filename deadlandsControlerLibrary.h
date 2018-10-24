@@ -12,35 +12,26 @@
   #include "WProgram.h"
 #endif
 
-class Enemy {
+class Character {
   public:
-    Enemy(int enemyID);
-    byte setEnemyStatus();
-    byte wound();
-    byte kill();
-    byte fatigue();
-    byte setWildCard();
-    byte setToughness();
-    byte setParry();
+    Character(int enemyID);
+    void addWound();
+    void kill();
+    void addFatigue();
+    void setWildCard();
+    void setToughness();
+    void setParry();
     byte getToughness();
     byte getParry();
     byte getStatus();
   private:
-};
-
-class Player {
-  public:
-    Enemy(int enemyID);
-    byte setEnemyStatus();
-    byte wound();
-    byte kill();
-    byte fatigue();
-    byte setWildCard();
-    byte setToughness();
-    byte setParry();
-    byte getToughness();
-    byte getParry();
-    byte getStatus();
-  private:
+    void setEnemyStatus(byte status = B00000000);
+    byte _wounds;
+    byte _fatigue;
+    byte _dead;
+    byte _toughness;
+    byte _parry;
+    byte _status;
+    byte _id;
 };
 #endif
