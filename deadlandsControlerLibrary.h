@@ -14,7 +14,7 @@
 
 class Character {
   public:
-    Character(int enemyID);
+    Character(int enemyID, bool wildCard);
     void addWound();
     void kill();
     void addFatigue();
@@ -28,7 +28,10 @@ class Character {
     void setEnemyStatus(byte status = B00000000);
     byte _wounds;
     byte _fatigue;
+    bool _wildCard;
     byte _dead;
+    bool _deadFromWound;
+    bool _deadFromFatigue;
     byte _toughness;
     byte _parry;
     byte _status;
