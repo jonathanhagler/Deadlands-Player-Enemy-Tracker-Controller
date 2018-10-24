@@ -13,6 +13,7 @@ void setup() {
 }
 
 void loop() {
+  for(int x=0; x > 3; x++){
   Serial.print("Enemy 1 Staggard: ");
   Serial.print(enemy1.getStaggeredByte(),BIN);
   Serial.print("\n");
@@ -33,7 +34,32 @@ void loop() {
   Serial.print("\n");
   Serial.print("\n");
   Serial.print("\n");
-  delay(15000);
-  //enemy1.addWound();
-  enemy1.addFatigue();
+  delay(5000);
+  enemy1.addWound();
   }
+
+  for(int x=0; x > 3; x++){
+    Serial.print("Enemy 1 Staggard: ");
+    Serial.print(enemy1.getStaggeredByte(),BIN);
+    Serial.print("\n");
+    Serial.print("Enemy 1 Wounds: ");
+    Serial.print(enemy1.getWounds(),BIN);
+    Serial.print("\n");
+    Serial.print("Enemy 1 Death: ");
+    Serial.print(enemy1.getDeadByte(),BIN);
+    Serial.print("\n");
+    Serial.print("Enemy 1 Fatigue: ");
+    Serial.print(enemy1.getFatigue(),BIN);
+    Serial.print("\n");
+    Serial.print("Enemy 1 Wild Card: ");
+    Serial.print(enemy1.getWildCardByte(),BIN);
+    Serial.print("\n");
+    Serial.print("Enemy 1 Status: ");
+    Serial.print(enemy1.getStatus(),BIN);
+    Serial.print("\n");
+    Serial.print("\n");
+    Serial.print("\n");
+    delay(5000);
+    enemy1.addFatigue();
+  }
+}
