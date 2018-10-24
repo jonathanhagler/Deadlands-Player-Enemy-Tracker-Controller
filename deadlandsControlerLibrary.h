@@ -20,6 +20,11 @@ class Enemy {
     byte kill();
     byte fatigue();
     byte setWildCard();
+    byte setToughness();
+    byte setParry();
+    byte getToughness();
+    byte getParry();
+    byte getStatus();
   private:
 };
 
@@ -31,6 +36,11 @@ class Player {
     byte kill();
     byte fatigue();
     byte setWildCard();
+    byte setToughness();
+    byte setParry();
+    byte getToughness();
+    byte getParry();
+    byte getStatus();
   private:
 };
 #endif
