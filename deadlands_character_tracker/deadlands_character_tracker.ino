@@ -31,5 +31,9 @@ void loop() {
   Serial.print("Enemy 1 Status: ");
   Serial.print(enemy1.getStatus(),BIN);
   Serial.print("\n");
-  delay(10000);
+  Serial.print("\n");
+  Serial.print("\n");
+  delay(15000);
+  //enemy1.addWound();
+  enemy1.addFatigue();
   }

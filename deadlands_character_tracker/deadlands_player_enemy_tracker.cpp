@@ -3,8 +3,8 @@
 Character::Character(int enemyID, bool wildCard) {
   _id = enemyID;
   _wildCard = wildCard;
-  _wounds = B00010000;
-  _fatigue = B00000010;
+  _wounds = B00000000;
+  _fatigue = B00000000;
   _staggered = false;
   _dead = true;
   _deadFromWound = false;
@@ -33,22 +33,22 @@ Character::Character(int enemyID, bool wildCard) {
 }
 void Character::addWound() {
   byte _woundResult = _wounds & B01110000;
-  if (_woundResult = B00000000) {
+  if (_woundResult == B00000000) {
     _wounds = B00010000;
   }
-  else if (_woundResult = B00010000) {
+  else if (_woundResult == B00010000) {
     _wounds = B00110000;
   }
-  else if (_woundResult = B00110000) {
+  else if (_woundResult == B00110000) {
     _wounds = B01110000;
-  }
-  else if (_woundResult = B01110000) {
-    _deadFromWound = true;
-    kill();
   }
   else if (_deadFromWound) {
     _wounds = B00000000;
     _deadByte = B00000000;
+  }
+  else if (_woundResult == B01110000) {
+    _deadFromWound = true;
+    kill();
   }
 }
 void Character::kill() {
@@ -64,19 +64,19 @@ void Character::staggered() {
 }
 void Character::addFatigue() {
   byte _fatigueResult = _fatigue & B00000110;
-  if (_fatigueResult = B00000000) {
+  if (_fatigueResult == B00000000) {
     _fatigue = B00000010;
   }
-  else if (_fatigueResult = B00000010) {
+  else if (_fatigueResult == B00000010) {
     _fatigue = B00000110;
-  }
-  else if (_fatigueResult = B00000110) {
-    _deadFromFatigue = true;
-    kill();
   }
   else if (_deadFromFatigue) {
     _fatigue = B00000000;
     _deadByte = B00000000;
+  }
+  else if (_fatigueResult == B00000110) {
+    _deadFromFatigue = true;
+    kill();
   }
 }
 void Character::setWildCard() {
