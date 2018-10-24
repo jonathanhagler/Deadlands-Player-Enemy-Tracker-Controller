@@ -4,13 +4,9 @@
   Created by Jonathan Hagler, October 21, 2018
 */
 
-#ifndef dcl
-#define dcl
-#if (ARDUINO >= 100)
-  #include "Arduino.h"
-#else
-  #include "WProgram.h"
-#endif
+#ifndef dcl_h
+#define dcl_h
+#include "Arduino.h"
 
 class Character {
   public:
@@ -25,18 +21,26 @@ class Character {
     byte getToughness();
     byte getParry();
     byte getStatus();
+    byte getWounds();
+    byte getStaggeredByte();
+    byte getFatigue();
+    byte getWildCardByte();
+    byte getDeadByte();
   private:
-    void setEnemyStatus(byte status = B00000000);
     byte _wounds;
     byte _fatigue;
     bool _staggered;
+    byte _staggeredByte;
     bool _wildCard;
-    byte _dead;
+    byte _wildCardByte;
+    bool _dead;
+    byte _deadByte;
     bool _deadFromWound;
     bool _deadFromFatigue;
     byte _toughness;
     byte _parry;
     byte _status;
-    byte _id;
+    int _id;
 };
+
 #endif
