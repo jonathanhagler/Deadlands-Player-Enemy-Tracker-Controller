@@ -1,8 +1,8 @@
 #include "deadlandsControlerLibrary.h"
 
-Character::Character(int enemyID, bool wildCard) {
-  _id = enemyID;
-  _wildCard = wildCard;
+
+Character::Character() {
+  _wildCard = false;
   _wounds = B00000000;
   _fatigue = B00000000;
   _staggered = false;
