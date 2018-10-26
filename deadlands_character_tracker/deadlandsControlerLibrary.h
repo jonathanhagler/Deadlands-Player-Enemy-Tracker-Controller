@@ -10,7 +10,7 @@
 
 class Character {
   public:
-    Character(int enemyID, bool wildCard);
+    Character();
     void addWound();
     void kill();
     void staggered();
@@ -40,7 +40,6 @@ class Character {
     byte _toughness;
     byte _parry;
     byte _status;
-    int _id;
 };
 
 #endif
