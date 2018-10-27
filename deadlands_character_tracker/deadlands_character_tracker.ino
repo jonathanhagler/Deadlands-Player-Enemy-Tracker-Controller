@@ -1,5 +1,4 @@
 #include "deadlandsControlerLibrary.h"
-#include "Arduino.h"
 
 const int numberOfEnemies = 8;
 const int numberOfPlayers = 8;

@@ -37,8 +37,8 @@ class Character {
     byte _deadByte;
     bool _deadFromWound;
     bool _deadFromFatigue;
-    byte _toughness;
-    byte _parry;
+    int _toughness;
+    int _parry;
     byte _status;
 };
 

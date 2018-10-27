@@ -1,5 +1,10 @@
 #include "deadlandsControlerLibrary.h"
-
+#include "LedControl.h"
+#if (ARDUINO >= 100)
+#include <Arduino.h>
+#else
+#include <WProgram.h>
+#endif
 
 Character::Character() {
   _wildCard = false;
@@ -9,8 +14,8 @@ Character::Character() {
   _dead = false;
   _deadFromWound = false;
   _deadFromFatigue = false;
-  _toughness = B00000000;
-  _parry = B00000000;
+  _toughness = 0;
+  _parry = 0;
   _status = B00000000;
   if (_dead){
     _deadByte = B00001000;
@@ -85,10 +90,14 @@ void Character::setWildCard() {
   _wildCard = true;
 }
 void Character::setToughness(){
-
+  // Take the _toughness variable and convert it to a byte that coorisponds to
+  // the 7 segemnt display Character. Send that byte to the correct 7 segment
+  // display
 }
 void Character::setParry() {
-
+ // Take the _parry variable and convert it to a byte that coorisponds to
+ // the 7 segemnt display Character. Send that byte to the correct 7 segment
+ // display
 }
 byte Character::getToughness() {
   return _toughness;
