@@ -6,7 +6,12 @@
 
 #ifndef dcl_h
 #define dcl_h
-#include "Arduino.h"
+#include "LedControl.h"
+#if (ARDUINO >= 100)
+#include <Arduino.h>
+#else
+#include <WProgram.h>
+#endif
 
 class Character {
   public:

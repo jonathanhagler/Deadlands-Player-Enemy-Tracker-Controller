@@ -1,10 +1,4 @@
 #include "deadlandsControlerLibrary.h"
-#include "LedControl.h"
-#if (ARDUINO >= 100)
-#include <Arduino.h>
-#else
-#include <WProgram.h>
-#endif
 
 Character::Character() {
   _wildCard = false;

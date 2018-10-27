@@ -2,6 +2,10 @@
 
 Notes
 
+Designed to work with the MAX7221 using the SPI bus and MAX7219 (with modification)
+for 7 segment and LED driving. Also designed around the MCP23017 GPIO Expander on
+the I2C bus.
+
 3 bytes per Character
   1 Toughness byte
   1 Parry byte
