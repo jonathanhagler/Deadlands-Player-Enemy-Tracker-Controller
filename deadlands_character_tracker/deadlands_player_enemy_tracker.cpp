@@ -2,64 +2,64 @@
 
 Character::Character() {
   _wildCard = false;
-  _wounds = B0;
-  _fatigue = B0;
+  _wounds = 0b0;
+  _fatigue = 0b0;
   _staggered = false;
   _dead = false;
   _deadFromWound = false;
   _deadFromFatigue = false;
   _toughness = 0;
   _parry = 0;
-  _status = B0;
+  _status = 0b0;
 }
 void Character::addWound() {
-  byte _woundResult = _wounds & B01110000;
+  byte _woundResult = _wounds & 0b01110000;
   if (_deadFromWound) {
-    _wounds = B0;
-    _deadByte = B0;
+    _wounds = 0b0;
+    _deadByte = 0b0;
     _deadFromWound = false;
   }
-  else if (_woundResult == B0) {
-    _wounds = B00010000;
+  else if (_woundResult == 0b0) {
+    _wounds = 0b00010000;
   }
-  else if (_woundResult == B00010000) {
-    _wounds = B00110000;
+  else if (_woundResult == 0b00010000) {
+    _wounds = 0b00110000;
   }
-  else if (_woundResult == B00110000) {
-    _wounds = B01110000;
+  else if (_woundResult == 0b00110000) {
+    _wounds = 0b01110000;
   }
-  else if (_woundResult == B01110000) {
+  else if (_woundResult == 0b01110000) {
     _deadFromWound = true;
     kill();
   }
 }
 void Character::kill() {
-  _deadByte = B00001000;
+  _deadByte = 0b00001000;
 }
 void Character::staggered() {
   if (_staggered) {
     _staggered = false;
-    _staggeredByte = B0;
+    _staggeredByte = 0b0;
   }
   else {
     _staggered = true;
-    _staggeredByte = B10000000;
+    _staggeredByte = 0b10000000;
   }
 }
 void Character::addFatigue() {
-  byte _fatigueResult = _fatigue & B00000110;
+  byte _fatigueResult = _fatigue & 0b00000110;
   if (_deadFromFatigue) {
-    _fatigue = B0;
-    _deadByte = B0;
+    _fatigue = 0b0;
+    _deadByte = 0b0;
     _deadFromFatigue = false;
   }
-  else if (_fatigueResult == B0) {
-    _fatigue = B00000010;
+  else if (_fatigueResult == 0b0) {
+    _fatigue = 0b00000010;
   }
-  else if (_fatigueResult == B00000010) {
-    _fatigue = B00000110;
+  else if (_fatigueResult == 0b00000010) {
+    _fatigue = 0b00000110;
   }
-  else if (_fatigueResult == B00000110) {
+  else if (_fatigueResult == 0b00000110) {
     _deadFromFatigue = true;
     kill();
   }
@@ -67,11 +67,11 @@ void Character::addFatigue() {
 void Character::setWildCard() {
   if (_wildCard) {
     _wildCard = false;
-    _wildCardByte = B0;
+    _wildCardByte = 0b0;
   }
   else {
     _wildCard = true;
-    _wildCardByte = B00000001;
+    _wildCardByte = 0b00000001;
   }
 }
 void Character::setToughness(int toughnessRating){
