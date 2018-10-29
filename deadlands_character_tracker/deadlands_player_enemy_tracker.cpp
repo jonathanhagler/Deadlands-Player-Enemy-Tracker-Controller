@@ -11,28 +11,15 @@ Character::Character() {
   _toughness = 0;
   _parry = 0;
   _status = B00000000;
-  if (_dead){
-    _deadByte = B00001000;
-  }
-  else {
-    _deadByte = B00000000;
-  }
-  if (_staggered){
-    _staggeredByte = B10000000;
-  }
-  else {
-    _staggeredByte = B00000000;
-  }
-  if (_wildCard){
-    _wildCardByte = B00000001;
-  }
-  else {
-    _wildCardByte = B00000000;
-  }
 }
 void Character::addWound() {
   byte _woundResult = _wounds & B01110000;
-  if (_woundResult == B00000000) {
+  if (_deadFromWound) {
+    _wounds = B00000000;
+    _deadByte = B00000000;
+    _deadFromWound = false;
+  }
+  else if (_woundResult == B00000000) {
     _wounds = B00010000;
   }
   else if (_woundResult == B00010000) {
@@ -40,11 +27,6 @@ void Character::addWound() {
   }
   else if (_woundResult == B00110000) {
     _wounds = B01110000;
-  }
-  else if (_deadFromWound) {
-    _wounds = B00000000;
-    _deadByte = B00000000;
-    _deadFromWound = false;
   }
   else if (_woundResult == B01110000) {
     _deadFromWound = true;
@@ -57,23 +39,25 @@ void Character::kill() {
 void Character::staggered() {
   if (_staggered) {
     _staggered = false;
+    _staggeredByte = B00000000;
   }
   else {
     _staggered = true;
+    _staggeredByte = B10000000;
   }
 }
 void Character::addFatigue() {
   byte _fatigueResult = _fatigue & B00000110;
-  if (_fatigueResult == B00000000) {
+  if (_deadFromFatigue) {
+    _fatigue = B00000000;
+    _deadByte = B00000000;
+    _deadFromFatigue = false;
+  }
+  else if (_fatigueResult == B00000000) {
     _fatigue = B00000010;
   }
   else if (_fatigueResult == B00000010) {
     _fatigue = B00000110;
-  }
-  else if (_deadFromFatigue) {
-    _fatigue = B00000000;
-    _deadByte = B00000000;
-    _deadFromFatigue = false;
   }
   else if (_fatigueResult == B00000110) {
     _deadFromFatigue = true;
@@ -81,17 +65,20 @@ void Character::addFatigue() {
   }
 }
 void Character::setWildCard() {
-  _wildCard = true;
+  if (_wildCard) {
+    _wildCard = false;
+    _wildCardByte = B00000000;
+  }
+  else {
+    _wildCard = true;
+    _wildCardByte = B00000001;
+  }
 }
-void Character::setToughness(){
-  // Take the _toughness variable and convert it to a byte that coorisponds to
-  // the 7 segemnt display Character. Send that byte to the correct 7 segment
-  // display
+void Character::setToughness(int toughnessRating){
+  _toughness = toughnessRating;
 }
-void Character::setParry() {
- // Take the _parry variable and convert it to a byte that coorisponds to
- // the 7 segemnt display Character. Send that byte to the correct 7 segment
- // display
+void Character::setParry(int parryRating) {
+  _parry = parryRating;
 }
 byte Character::getToughness() {
   return _toughness;

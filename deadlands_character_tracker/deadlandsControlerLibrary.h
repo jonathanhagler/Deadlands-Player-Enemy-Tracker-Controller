@@ -21,8 +21,8 @@ class Character {
     void staggered();
     void addFatigue();
     void setWildCard();
-    void setToughness();
-    void setParry();
+    void setToughness(int toughnessRating);
+    void setParry(int parryRating);
     byte getToughness();
     byte getParry();
     byte getStatus();
