@@ -23,28 +23,28 @@ class Character {
     void setWildCard();
     void setToughness(int toughnessRating);
     void setParry(int parryRating);
-    byte getToughness();
-    byte getParry();
-    byte getStatus();
-    byte getWounds();
-    byte getStaggeredByte();
-    byte getFatigue();
-    byte getWildCardByte();
-    byte getDeadByte();
+    uint8_t getToughness();
+    uint8_t getParry();
+    uint8_t getStatus();
+    uint8_t getWounds();
+    uint8_t getStaggeredByte();
+    uint8_t getFatigue();
+    uint8_t getWildCardByte();
+    uint8_t getDeadByte();
   private:
-    byte _wounds;
-    byte _fatigue;
+    uint8_t _wounds;
+    uint8_t _fatigue;
     bool _staggered;
-    byte _staggeredByte;
+    uint8_t _staggeredByte;
     bool _wildCard;
-    byte _wildCardByte;
+    uint8_t _wildCardByte;
     bool _dead;
-    byte _deadByte;
+    uint8_t _deadByte;
     bool _deadFromWound;
     bool _deadFromFatigue;
     int _toughness;
     int _parry;
-    byte _status;
+    uint8_t _status;
 };
 
 #endif
