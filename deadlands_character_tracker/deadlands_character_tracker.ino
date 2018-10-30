@@ -5,6 +5,9 @@ const int numberOfPlayers = 8;
 bool instantiationComplete = false;
 Character enemies[numberOfEnemies];
 Character players[numberOfPlayers];
+LedControl chip1(13);
+LedControl chip2(14);
+LedControl chip3(15);
 bool firstRun = true;
 
 void setup() {
