@@ -14,23 +14,37 @@ Character::Character() {
 }
 void Character::addWound() {
   byte _woundResult = _wounds & 0b1110000;
-  if (_deadFromWound) {
-    _wounds = 0b0;
-    _deadByte = 0b0;
-    _deadFromWound = false;
-  }
-  else if (_woundResult == 0b0) {
-    _wounds = 0b10000;
-  }
-  else if (_woundResult == 0b10000) {
-    _wounds = 0b110000;
-  }
-  else if (_woundResult == 0b110000) {
-    _wounds = 0b1110000;
-  }
-  else if (_woundResult == 0b1110000) {
-    _deadFromWound = true;
-    kill();
+  if (_wildCard) {
+    if (_deadFromWound) {
+      _wounds = 0b0;
+      _deadByte = 0b0;
+      _deadFromWound = false;
+    }
+    else if (_woundResult == 0b0) {
+      _wounds = 0b10000;
+    }
+    else if (_woundResult == 0b10000) {
+      _deadFromWound = true;
+      kill();
+  } else {
+    if (_deadFromWound) {
+      _wounds = 0b0;
+      _deadByte = 0b0;
+      _deadFromWound = false;
+    }
+    else if (_woundResult == 0b0) {
+      _wounds = 0b100000;
+    }
+    else if (_woundResult == 0b100000) {
+      _wounds = 0b110000;
+    }
+    else if (_woundResult == 0b110000) {
+      _wounds = 0b111000;
+    }
+    else if (_woundResult == 0b111000) {
+      _deadFromWound = true;
+      kill();
+    }
   }
 }
 void Character::kill() {
@@ -54,12 +68,12 @@ void Character::addFatigue() {
     _deadFromFatigue = false;
   }
   else if (_fatigueResult == 0b0) {
-    _fatigue = 0b10;
+    _fatigue = 0b1;
   }
-  else if (_fatigueResult == 0b10) {
-    _fatigue = 0b110;
+  else if (_fatigueResult == 0b1) {
+    _fatigue = 0b11;
   }
-  else if (_fatigueResult == 0b110) {
+  else if (_fatigueResult == 0b11) {
     _deadFromFatigue = true;
     kill();
   }
