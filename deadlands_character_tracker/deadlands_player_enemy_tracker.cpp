@@ -24,8 +24,15 @@ void Character::addWound() {
       _wounds = 0b10000;
     }
     else if (_woundResult == 0b10000) {
+      _wounds = 0b110000;
+    }
+    else if (_woundResult == 0b110000) {
+      _wounds = 0b1110000;
+    }
+    else if (_woundResult == 0b1110000) {
       _deadFromWound = true;
       kill();
+    }
   } else {
     if (_deadFromWound) {
       _wounds = 0b0;
@@ -33,15 +40,9 @@ void Character::addWound() {
       _deadFromWound = false;
     }
     else if (_woundResult == 0b0) {
-      _wounds = 0b100000;
+      _wounds = 0b10000;
     }
-    else if (_woundResult == 0b100000) {
-      _wounds = 0b110000;
-    }
-    else if (_woundResult == 0b110000) {
-      _wounds = 0b111000;
-    }
-    else if (_woundResult == 0b111000) {
+    else if (_woundResult == 0b10000) {
       _deadFromWound = true;
       kill();
     }
@@ -68,12 +69,12 @@ void Character::addFatigue() {
     _deadFromFatigue = false;
   }
   else if (_fatigueResult == 0b0) {
-    _fatigue = 0b1;
+    _fatigue = 0b10;
   }
-  else if (_fatigueResult == 0b1) {
-    _fatigue = 0b11;
+  else if (_fatigueResult == 0b10) {
+    _fatigue = 0b110;
   }
-  else if (_fatigueResult == 0b11) {
+  else if (_fatigueResult == 0b110) {
     _deadFromFatigue = true;
     kill();
   }
@@ -101,6 +102,11 @@ byte Character::getParry() {
   return _parry;
 }
 byte Character::getStatus() {
+  if (_wildCard) {
+    _wildCardByte = 0b1;
+  } else {
+    _wildCardByte = 0b0;
+  }
   _status = _staggeredByte + _wounds + _deadByte + _fatigue + _wildCardByte;
   return _status;
 }

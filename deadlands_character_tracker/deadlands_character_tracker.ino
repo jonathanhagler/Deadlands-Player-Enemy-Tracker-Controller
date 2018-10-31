@@ -26,6 +26,7 @@ void loop() {
     Serial.print("\n");
   }
   firstRun = false;
+  enemies[0].setWildCard();
   delay(5000);
 }
 
