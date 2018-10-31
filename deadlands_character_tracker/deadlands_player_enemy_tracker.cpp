@@ -13,28 +13,28 @@ Character::Character() {
   _status = 0b0;
 }
 void Character::addWound() {
-  byte _woundResult = _wounds & 0b01110000;
+  byte _woundResult = _wounds & 0b1110000;
   if (_deadFromWound) {
     _wounds = 0b0;
     _deadByte = 0b0;
     _deadFromWound = false;
   }
   else if (_woundResult == 0b0) {
-    _wounds = 0b00010000;
+    _wounds = 0b10000;
   }
-  else if (_woundResult == 0b00010000) {
-    _wounds = 0b00110000;
+  else if (_woundResult == 0b10000) {
+    _wounds = 0b110000;
   }
-  else if (_woundResult == 0b00110000) {
-    _wounds = 0b01110000;
+  else if (_woundResult == 0b110000) {
+    _wounds = 0b1110000;
   }
-  else if (_woundResult == 0b01110000) {
+  else if (_woundResult == 0b1110000) {
     _deadFromWound = true;
     kill();
   }
 }
 void Character::kill() {
-  _deadByte = 0b00001000;
+  _deadByte = 0b1000;
 }
 void Character::staggered() {
   if (_staggered) {
@@ -47,19 +47,19 @@ void Character::staggered() {
   }
 }
 void Character::addFatigue() {
-  byte _fatigueResult = _fatigue & 0b00000110;
+  byte _fatigueResult = _fatigue & 0b110;
   if (_deadFromFatigue) {
     _fatigue = 0b0;
     _deadByte = 0b0;
     _deadFromFatigue = false;
   }
   else if (_fatigueResult == 0b0) {
-    _fatigue = 0b00000010;
+    _fatigue = 0b10;
   }
-  else if (_fatigueResult == 0b00000010) {
-    _fatigue = 0b00000110;
+  else if (_fatigueResult == 0b10) {
+    _fatigue = 0b110;
   }
-  else if (_fatigueResult == 0b00000110) {
+  else if (_fatigueResult == 0b110) {
     _deadFromFatigue = true;
     kill();
   }
@@ -71,7 +71,7 @@ void Character::setWildCard() {
   }
   else {
     _wildCard = true;
-    _wildCardByte = 0b00000001;
+    _wildCardByte = 0b1;
   }
 }
 void Character::setToughness(int toughnessRating){
