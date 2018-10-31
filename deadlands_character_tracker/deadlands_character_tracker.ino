@@ -16,20 +16,19 @@ void setup() {
 
 void loop() {
   if (firstRun) {
-  for (int x = 0; x <= 2; x++){
-    Serial.print("Enemy ");
-    Serial.print(x);
-    Serial.print( " Status: ");
-    Serial.print(enemies[x].getStatus(),BIN);
-    Serial.print("\n");
-    Serial.print("\n");
-    Serial.print("\n");
+    enemies[0].setWildCard();
+    for (int x = 0; x <= 2; x++){
+      Serial.print("Enemy ");
+      Serial.print(x);
+      Serial.print( " Status: ");
+      Serial.print(enemies[x].getStatus(),BIN);
+      Serial.print("\n");
+      Serial.print("\n");
+      Serial.print("\n");
+    }
+    firstRun = false;
+    delay(5000);
   }
-  firstRun = false;
-  enemies[0].setWildCard();
-  delay(5000);
-}
-
   enemies[0].addWound();
   enemies[0].staggered();
   enemies[1].addFatigue();
