@@ -8,6 +8,7 @@ Character players[numberOfPlayers];
 LedControl chip1(13);
 LedControl chip2(14);
 LedControl chip3(15);
+const int characterChipInfo[][] = {{1,0,1}{1,2,3},3,4}
 bool firstRun = true;
 
 void setup() {
@@ -43,4 +44,26 @@ void loop() {
     Serial.print("\n");
   }
   delay(5000);
+}
+void selectEnemy(){
+
+}
+
+void selectPlayer(){
+
+}
+void displayEnemyParry(int selectedEnemy) {
+  for (x=0;x<4;x++) {
+    if (selectedCharacter == chip1Characters[x])
+    chip1Found = true;
+  }
+  if(chip1Found == true) {
+
+  } else {
+
+  }
+}
+
+void displayPlayerParry(int selectedPlayer) {
+
 }
