@@ -7,10 +7,6 @@ Character enemies[numberOfEnemies];
 Character players[numberOfPlayers];
 const int characterChipInfo[8][3] = {{1,0,1},{1,2,3},{1,4,5},{1,6,7},
                                      {2,0,1},{2,2,3},{2,4,5},{2,6,7}};
-int enemyParryToughnessArray[8][2] = {{0,0},{0,0},{0,0},{0,0},
-                                      {0,0},{0,0},{0,0},{0,0}}
-int playerParryToughnessArray[8][2] = {{0,0},{0,0},{0,0},{0,0},
-                                      {0,0},{0,0},{0,0},{0,0}}
 // *********** End Deadlands Variables ***********
 
 // *********** LedControl Library Variables ***********
@@ -65,29 +61,44 @@ void selectEnemy(){
   // Using a rotary encoder, select the number referring to the
   // enemy. Set that number equal to "selectedEnemy"
 }
-
 void selectPlayer(){
   // This funtion will be called when an interupt event is detected.
   // Using a rotary encoder, select the number referring to the
   // enemy. Set that number equal to "selectedEnemy"
 }
-
 void setEnemyToughtness() {
   // This funtion will be called when an interupt event is detected.
-  // Using a rotary encoder, select the toughness from 0-9. Set that equal to
-  //"enemyToughness"
+  // Using a rotary encoder, select the toughness from 0-9. Set that number
+  // to the variable "toughnessRating". Use character method to apply the
+  // property to the slected enemy.
+  //  enemies[selectedEnemy].setToughness(toughnessRating)
 }
 void setPlayerToughness() {
   // This funtion will be called when an interupt event is detected.
-  //Useinga rotary encoder to select the toughness from 0-9. Set that equal to
-  //"playerToughness"
+  // Using a rotary encoder, select the toughness from 0-9. Set that number
+  // to the variable "toughnessRating". Use character method to apply the
+  // property to the slected player.
+  //  player[selectedPlayer].setToughness(toughnessRating)
+}
+void setEnemyParry() {
+  // This funtion will be called when an interupt event is detected.
+  // Using a rotary encoder, select the toughness from 0-9. Set that number
+  // to the variable "parryRating". Use character method to apply the
+  // property to the slected enemy.
+  //  enemies[selectedEnemy].setParry(parryRating)
+}
+void setPlayerParry() {
+  // This funtion will be called when an interupt event is detected.
+  // Using a rotary encoder, select the toughness from 0-9. Set that number
+  // to the variable "parryRating". Use character method to apply the
+  // property to the slected player.
+  //  player[selectedPlayer].setParry(parryRating)
 }
 void displayEnemyParry(int selectedEnemy) {
   // This will be called as part of the main loop.
   // Check to see if the enemy toughness has changed. If it has, send to
   // the display.
 }
-
 void displayPlayerParry(int selectedPlayer) {
   // This will be called as part of the main loop.
   // Check to see if the enemy toughness has changed. If it has, send to
