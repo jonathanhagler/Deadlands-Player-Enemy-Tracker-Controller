@@ -1,15 +1,27 @@
 #include "deadlandsControlerLibrary.h"
 
+// *********** Deadlands Variables ***********
 const int numberOfEnemies = 8;
 const int numberOfPlayers = 8;
-bool instantiationComplete = false;
 Character enemies[numberOfEnemies];
 Character players[numberOfPlayers];
+const int characterChipInfo[8][3] = {{1,0,1},{1,2,3},{1,4,5},{1,6,7},
+                                     {2,0,1},{2,2,3},{2,4,5},{2,6,7}};
+int enemyParryToughnessArray[8][2] = {{0,0},{0,0},{0,0},{0,0},
+                                      {0,0},{0,0},{0,0},{0,0}}
+int playerParryToughnessArray[8][2] = {{0,0},{0,0},{0,0},{0,0},
+                                      {0,0},{0,0},{0,0},{0,0}}
+// *********** End Deadlands Variables ***********
+
+// *********** LedControl Library Variables ***********
 LedControl chip1(13);
 LedControl chip2(14);
 LedControl chip3(15);
-const int characterChipInfo[][] = {{1,0,1}{1,2,3},3,4}
+// *********** End LEDControl LIbrary Variables ***********
+
+
 bool firstRun = true;
+bool instantiationComplete = false;
 
 void setup() {
   Serial.begin(9600);
@@ -45,25 +57,39 @@ void loop() {
   }
   delay(5000);
 }
-void selectEnemy(){
 
+// *********** Functions ***********
+//
+void selectEnemy(){
+  // This funtion will be called when an interupt event is detected.
+  // Using a rotary encoder, select the number referring to the
+  // enemy. Set that number equal to "selectedEnemy"
 }
 
 void selectPlayer(){
+  // This funtion will be called when an interupt event is detected.
+  // Using a rotary encoder, select the number referring to the
+  // enemy. Set that number equal to "selectedEnemy"
+}
 
+void setEnemyToughtness() {
+  // This funtion will be called when an interupt event is detected.
+  // Using a rotary encoder, select the toughness from 0-9. Set that equal to
+  //"enemyToughness"
+}
+void setPlayerToughness() {
+  // This funtion will be called when an interupt event is detected.
+  //Useinga rotary encoder to select the toughness from 0-9. Set that equal to
+  //"playerToughness"
 }
 void displayEnemyParry(int selectedEnemy) {
-  for (x=0;x<4;x++) {
-    if (selectedCharacter == chip1Characters[x])
-    chip1Found = true;
-  }
-  if(chip1Found == true) {
-
-  } else {
-
-  }
+  // This will be called as part of the main loop.
+  // Check to see if the enemy toughness has changed. If it has, send to
+  // the display.
 }
 
 void displayPlayerParry(int selectedPlayer) {
-
+  // This will be called as part of the main loop.
+  // Check to see if the enemy toughness has changed. If it has, send to
+  // the display.
 }
