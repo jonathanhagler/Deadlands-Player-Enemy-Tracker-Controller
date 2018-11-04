@@ -32,18 +32,18 @@ class Character {
     uint8_t getWildCardByte();
     uint8_t getDeadByte();
   private:
-    uint8_t _wounds;
-    uint8_t _fatigue;
-    bool _staggered;
+    volatile uint8_t _wounds;
+    volatile uint8_t _fatigue;
+    volatile bool _staggered;
     uint8_t _staggeredByte;
-    bool _wildCard;
+    volatile bool _wildCard;
     uint8_t _wildCardByte;
     bool _dead;
     uint8_t _deadByte;
     bool _deadFromWound;
     bool _deadFromFatigue;
-    int _toughness;
-    int _parry;
+    volatile int _toughness;
+    volatile int _parry;
     uint8_t _status;
 };
 
